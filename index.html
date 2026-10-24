@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kael's RPG: El Reino de las Sombras </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <div id="game-container" class="w-full max-w-4xl bg-slate-900 border-4 border-slate-700 rounded-lg p-6 shadow-2xl relative overflow-hidden">
+    
+    <!-- PANTALLA DE INICIO -->
+    <div id="screen-start" class="flex flex-col items-center justify-center py-10 text-center space-y-6">
+      <div>
+        <h1 class="text-3xl md:text-5xl text-purple-400 font-bold tracking-wider leading-relaxed title-gradient">
+          KAEL'S RPG
+        </h1>
+        <p class="text-xs md:text-sm text-amber-400 font-bold mt-1 tracking-widest">
+          ✦ EL REINO DE LAS SOMBRAS ✦
+        </p>
+      </div>
+      
+      <p class="text-xs text-slate-300 max-w-md leading-relaxed">
+        Elige cómo deseas experimentar la aventura de Kael:
+      </p>
+      
+      <div class="space-y-4 w-72">
+        <button onclick="showScreen('screen-story-select')" class="pixel-btn w-full bg-purple-700 hover:bg-purple-600 text-white py-3 px-4 border-b-4 border-purple-900 rounded font-bold text-xs">
+          MODO CUENTO (HISTORIA)
+        </button>
+        <button onclick="showScreen('screen-boss-select')" class="pixel-btn w-full bg-red-700 hover:bg-red-600 text-white py-3 px-4 border-b-4 border-red-900 rounded font-bold text-xs">
+           MODO BATALLA DE JEFES
+        </button>
+        <button onclick="showScreen('screen-bestiary')" class="pixel-btn w-full bg-slate-700 hover:bg-slate-600 text-white py-3 px-4 border-b-4 border-slate-900 rounded font-bold text-xs">
+           BESTIARIO
+        </button>
+      </div>
+    </div>
+
+    <!-- SELECCIÓN DE CAPÍTULOS DEL CUENTO -->
+    <div id="screen-story-select" class="hidden flex-col space-y-6">
+      <div class="flex justify-between items-center border-b-2 border-slate-700 pb-2">
+        <h2 class="text-sm text-purple-400 font-bold">CAPÍTULOS DEL CUENTO</h2>
+        <button onclick="returnToStart()" class="text-xs text-slate-400 hover:text-white">Volver</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Capítulo 1: Kaul -->
+        <div onclick="startStoryChapter(0)" class="cursor-pointer bg-slate-950 p-4 rounded-lg border-2 border-purple-900/65 hover:border-purple-500 transition-all flex items-center space-x-4">
+          <div class="w-16 h-16 bg-slate-900 rounded border border-purple-700 flex items-center justify-center p-1">
+            <img src="img/4346203b-ef9f-4581-acac-0c9bb9194856.png" alt="Kaul" class="w-full h-full object-contain pixelated">
+          </div>
+          <div>
+            <span class="text-[10px] text-amber-400 font-bold">CAPÍTULO 1</span>
+            <h3 class="text-xs font-bold text-purple-300 mt-1">Bosque Oscuro</h3>
+            <p class="text-[9px] text-slate-400 mt-1">Jefe: Kaul</p>
+          </div>
+        </div>
+
+        <!-- Capítulo 2: Arenigma -->
+        <div onclick="startStoryChapter(1)" class="cursor-pointer bg-slate-950 p-4 rounded-lg border-2 border-purple-900/65 hover:border-purple-500 transition-all flex items-center space-x-4">
+          <div class="w-16 h-16 bg-slate-900 rounded border border-purple-700 flex items-center justify-center p-1">
+            <img src="img/5a52749a-0c67-47c8-998e-532246a1f524.png" alt="Arenigma" class="w-full h-full object-contain pixelated">
+          </div>
+          <div>
+            <span class="text-[10px] text-amber-400 font-bold">CAPÍTULO 2</span>
+            <h3 class="text-xs font-bold text-purple-300 mt-1">Desierto de los Sueños</h3>
+            <p class="text-[9px] text-slate-400 mt-1">Jefe: Arenigma</p>
+          </div>
+        </div>
+
+        <!-- Capítulo 3: Pesadrom -->
+        <div onclick="startStoryChapter(2)" class="cursor-pointer bg-slate-950 p-4 rounded-lg border-2 border-purple-900/65 hover:border-purple-500 transition-all flex items-center space-x-4">
+          <div class="w-16 h-16 bg-slate-900 rounded border border-purple-700 flex items-center justify-center p-1">
+            <img src="img/4294d388-33e3-410b-900d-ed31eca5921c.png" alt="Pesadrom" class="w-full h-full object-contain pixelated">
+          </div>
+          <div>
+            <span class="text-[10px] text-amber-400 font-bold">CAPÍTULO 3</span>
+            <h3 class="text-xs font-bold text-purple-300 mt-1">Fortaleza: Entrada</h3>
+            <p class="text-[9px] text-slate-400 mt-1">Jefe: Pesadrom</p>
+          </div>
+        </div>
+
+        <!-- Capítulo 4: Antasma -->
+        <div onclick="startStoryChapter(3)" class="cursor-pointer bg-slate-950 p-4 rounded-lg border-2 border-purple-900/65 hover:border-purple-500 transition-all flex items-center space-x-4">
+          <div class="w-16 h-16 bg-slate-900 rounded border border-purple-700 flex items-center justify-center p-1">
+            <img src="img/40f265c7-362b-4ee7-aea1-a8ac526f3073.png" alt="Antasma" class="w-full h-full object-contain pixelated">
+          </div>
+          <div>
+            <span class="text-[10px] text-amber-400 font-bold">CAPÍTULO 4</span>
+            <h3 class="text-xs font-bold text-purple-300 mt-1">Reino de las Pesadillas</h3>
+            <p class="text-[9px] text-slate-400 mt-1">Jefe: Antasma</p>
+          </div>
+        </div>
+
+        <!-- Capítulo 5: Rey Osseus -->
+        <div onclick="startStoryChapter(4)" class="cursor-pointer bg-slate-950 p-4 rounded-lg border-2 border-purple-900/65 hover:border-purple-500 transition-all flex items-center space-x-4 col-span-1 md:col-span-2">
+          <div class="w-16 h-16 bg-slate-900 rounded border border-purple-700 flex items-center justify-center p-1">
+            <img src="img/f9d12509-619c-4f03-8b94-de638582b045.png" alt="Rey Osseus" class="w-full h-full object-contain pixelated">
+          </div>
+          <div>
+            <span class="text-[10px] text-amber-400 font-bold">CAPÍTULO 5 (FINAL)</span>
+            <h3 class="text-xs font-bold text-purple-300 mt-1">Trono de la Fortaleza</h3>
+            <p class="text-[9px] text-slate-400 mt-1">Jefe Final: Rey Osseus</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LECTOR DE HISTORIA / CUENTO -->
+    <div id="screen-story-reader" class="hidden flex-col space-y-6">
+      <div class="flex justify-between items-center border-b-2 border-slate-700 pb-2">
+        <span id="story-chapter-title" class="text-xs text-purple-400 font-bold">Capítulo 1</span>
+        <button onclick="showScreen('screen-story-select')" class="text-xs text-slate-400 hover:text-white">Capítulos</button>
+      </div>
+      
+      <div class="bg-slate-950 p-6 rounded-lg border-2 border-purple-900/50 min-h-[220px] flex flex-col items-center justify-center text-center space-y-4">
+        <div id="story-illustration" class="w-24 h-24 bg-slate-900 rounded-lg p-2 border border-slate-700 shadow-lg">
+          <img id="story-img" src="" class="w-full h-full object-contain pixelated" alt="Ilustración">
+        </div>
+        <p id="story-text" class="text-xs leading-relaxed text-slate-300 max-w-xl"></p>
+      </div>
+
+      <div class="flex justify-between items-center">
+        <button id="story-prev-btn" onclick="prevStoryParagraph()" class="pixel-btn bg-slate-700 hover:bg-slate-600 text-white py-3 px-4 border-b-4 border-slate-900 rounded text-xs">
+          ANTERIOR
+        </button>
+        <button id="story-next-btn" onclick="nextStoryParagraph()" class="pixel-btn bg-purple-700 hover:bg-purple-600 text-white py-3 px-6 border-b-4 border-purple-900 rounded text-xs">
+          SIGUIENTE
+        </button>
+      </div>
+    </div>
+
+    <!-- SELECCIÓN DE JEFES (MODO COMBATE DIRECTO) -->
+    <div id="screen-boss-select" class="hidden flex-col space-y-6">
+      <div class="flex justify-between items-center border-b-2 border-slate-700 pb-2">
+        <h2 class="text-sm text-red-400 font-bold">SELECCIONA UN JEFE PARA COMBATIR</h2>
+        <button onclick="returnToStart()" class="text-xs text-slate-400 hover:text-white">Volver</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Kaul -->
+        <div onclick="startBossBattle('kaul')" class="cursor-pointer bg-slate-950 p-4 rounded-lg border-2 border-green-900/60 hover:border-green-500 transition-all flex flex-col items-center text-center space-y-2">
+          <div class="w-20 h-20 bg-slate-900 rounded border border-green-700 flex items-center justify-center p-1">
+            <img src="img/4346203b-ef9f-4581-acac-0c9bb9194856.png" alt="Kaul" class="w-full h-full object-contain pixelated">
+          </div>
+          <h3 class="text-xs font-bold text-green-400">1. Kaul</h3>
+          <p class="text-[9px] text-slate-400">Bosque Oscuro</p>
+          <p class="text-[9px] text-slate-500">HP: 120 | ATK: 14</p>
+          <span class="text-[9px] text-green-400 font-bold border border-green-800 px-2 py-0.5 rounded mt-1">RETAR</span>
+        </div>
+
+        <!-- Arenigma -->
+        <div onclick="startBossBattle('arenigma')" class="cursor-pointer bg-slate-950 p-4 rounded-lg border-2 border-amber-900/60 hover:border-amber-500 transition-all flex flex-col items-center text-center space-y-2">
+          <div class="w-20 h-20 bg-slate-900 rounded border border-amber-700 flex items-center justify-center p-1">
+            <img src="img/5a52749a-0c67-47c8-998e-532246a1f524.png" alt="Arenigma" class="w-full h-full object-contain pixelated">
+          </div>
+          <h3 class="text-xs font-bold text-amber-400">2. Arenigma</h3>
+          <p class="text-[9px] text-slate-400">Desierto de los Sueños</p>
+          <p class="text-[9px] text-slate-500">HP: 140 | ATK: 16</p>
+          <span class="text-[9px] text-amber-400 font-bold border border-amber-800 px-2 py-0.5 rounded mt-1">RETAR</span>
+        </div>
+
+        <!-- Pesadrom -->
+        <div onclick="startBossBattle('pesadrom')" class="cursor-pointer bg-slate-950 p-4 rounded-lg border-2 border-purple-900/60 hover:border-purple-500 transition-all flex flex-col items-center text-center space-y-2">
+          <div class="w-20 h-20 bg-slate-900 rounded border border-purple-700 flex items-center justify-center p-1">
+            <img src="img/4294d388-33e3-410b-900d-ed31eca5921c.png" alt="Pesadrom" class="w-full h-full object-contain pixelated">
+          </div>
+          <h3 class="text-xs font-bold text-purple-400">3. Pesadrom</h3>
+          <p class="text-[9px] text-slate-400">Entrada de la Fortaleza</p>
+          <p class="text-[9px] text-slate-500">HP: 170 | ATK: 19</p>
+          <span class="text-[9px] text-purple-400 font-bold border border-purple-800 px-2 py-0.5 rounded mt-1">RETAR</span>
+        </div>
+
+        <!-- Antasma -->
+        <div onclick="startBossBattle('antasma')" class="cursor-pointer bg-slate-950 p-4 rounded-lg border-2 border-indigo-900/60 hover:border-indigo-500 transition-all flex flex-col items-center text-center space-y-2">
+          <div class="w-20 h-20 bg-slate-900 rounded border border-indigo-700 flex items-center justify-center p-1">
+            <img src="img/40f265c7-362b-4ee7-aea1-a8ac526f3073.png" alt="Antasma" class="w-full h-full object-contain pixelated">
+          </div>
+          <h3 class="text-xs font-bold text-indigo-400">4. Antasma</h3>
+          <p class="text-[9px] text-slate-400">Reino de las Pesadillas</p>
+          <p class="text-[9px] text-slate-500">HP: 200 | ATK: 22</p>
+          <span class="text-[9px] text-indigo-400 font-bold border border-indigo-800 px-2 py-0.5 rounded mt-1">RETAR</span>
+        </div>
+
+        <!-- Rey Osseus -->
+        <div onclick="startBossBattle('osseus')" class="cursor-pointer bg-slate-950 p-4 rounded-lg border-2 border-red-900/60 hover:border-red-500 transition-all flex flex-col items-center text-center space-y-2 col-span-1 md:col-span-2 lg:col-span-2">
+          <div class="w-20 h-20 bg-slate-900 rounded border border-red-700 flex items-center justify-center p-1">
+            <img src="img/f9d12509-619c-4f03-8b94-de638582b045.png" alt="Rey Osseus" class="w-full h-full object-contain pixelated">
+          </div>
+          <h3 class="text-xs font-bold text-red-400">5. Rey Osseus (Jefe Final)</h3>
+          <p class="text-[9px] text-slate-400">Trono de la Fortaleza</p>
+          <p class="text-[9px] text-slate-500">HP: 250 | ATK: 25</p>
+          <span class="text-[9px] text-red-400 font-bold border border-red-800 px-2 py-0.5 rounded mt-1">RETAR JEFE FINAL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANTALLA DE COMBATE -->
+    <div id="screen-battle" class="hidden flex-col space-y-6">
+      <div class="flex justify-between items-center border-b-2 border-slate-700 pb-2 text-xs">
+        <span class="text-red-400 font-bold flex items-center gap-2">
+          <span class="animate-pulse">⚔️</span> COMBATE CONTRA JEFE
+        </span>
+        <button onclick="returnToStart()" class="text-[10px] text-slate-400 hover:text-white">Rendirse</button>
+      </div>
+
+      <!-- ARENA DE BATALLA 32-BIT -->
+      <div class="grid grid-cols-2 gap-6 bg-slate-950 p-6 rounded-lg border-2 border-slate-800 my-2">
+        
+        <!-- JUGADOR: KAUL -->
+        <div id="player-sprite-box" class="flex flex-col items-center justify-center space-y-3 p-4 bg-slate-900/70 rounded-lg border border-purple-900/40 shadow-lg">
+          <div class="w-24 h-24 bg-gradient-to-b from-purple-900 to-indigo-950 rounded-lg flex items-center justify-center border-2 border-purple-400 shadow-xl p-1 relative">
+            <img src="img/kaul.jpg" alt="Kaul" class="w-full h-full object-contain pixelated">
+          </div>
+          <span class="text-xs font-bold text-purple-300">Kaul (Héroe)</span>
+          
+          <div class="w-full bg-slate-800 rounded-full h-4 border border-slate-600 overflow-hidden relative shadow-inner">
+            <div id="player-hp-bar" class="hp-bar-fill bg-gradient-to-r from-emerald-600 to-green-400 h-full transition-all duration-300" style="width: 100%;"></div>
+          </div>
+          <span id="player-hp-text" class="text-[10px] text-slate-300 font-mono">100 / 100 HP</span>
+        </div>
+
+        <!-- JEFE ENEMIGO -->
+        <div id="enemy-sprite-box" class="flex flex-col items-center justify-center space-y-3 p-4 bg-slate-900/70 rounded-lg border border-red-900/40 shadow-lg">
+          <div id="enemy-avatar" class="w-24 h-24 bg-gradient-to-b from-red-950 to-slate-950 rounded-lg flex items-center justify-center border-2 border-red-500 shadow-xl p-1 relative">
+            <img id="enemy-img" src="" alt="Enemigo" class="w-full h-full object-contain pixelated">
+          </div>
+          <span id="enemy-name" class="text-xs font-bold text-red-400">Jefe</span>
+          
+          <div class="w-full bg-slate-800 rounded-full h-4 border border-slate-600 overflow-hidden relative shadow-inner">
+            <div id="enemy-hp-bar" class="hp-bar-fill bg-gradient-to-r from-red-700 to-rose-500 h-full transition-all duration-300" style="width: 100%;"></div>
+          </div>
+          <span id="enemy-hp-text" class="text-[10px] text-slate-300 font-mono">150 / 150 HP</span>
+        </div>
+
+      </div>
+
+      <!-- LOG DE BATALLA -->
+      <div id="battle-log" class="bg-slate-950 p-3 rounded-lg border border-slate-800 h-20 overflow-y-auto text-[10px] text-slate-300 space-y-1 font-mono">
+        <p class="text-purple-400">¡Comienza el duelo contra el jefe del Reino de las Sombras!</p>
+      </div>
+
+      <!-- CONTROLES -->
+      <div class="grid grid-cols-2 gap-3">
+        <button onclick="playerAction('attack')" class="pixel-btn bg-red-700 hover:bg-red-600 text-white py-3 border-b-4 border-red-900 rounded text-xs">
+          ATACAR (⚔️)
+        </button>
+        <button onclick="playerAction('magic')" class="pixel-btn bg-blue-700 hover:bg-blue-600 text-white py-3 border-b-4 border-blue-900 rounded text-xs">
+          MAGIA (🔮)
+        </button>
+        <button onclick="playerAction('heal')" class="pixel-btn bg-green-700 hover:bg-green-600 text-white py-3 border-b-4 border-green-900 rounded text-xs">
+          CURAR (❤️)
+        </button>
+        <button onclick="playerAction('defend')" class="pixel-btn bg-amber-700 hover:bg-amber-600 text-white py-3 border-b-4 border-amber-900 rounded text-xs">
+          DEFENDER (🛡️)
+        </button>
+      </div>
+    </div>
+
+    <!-- BESTIARIO -->
+    <div id="screen-bestiary" class="hidden flex-col space-y-6">
+      <div class="flex justify-between items-center border-b-2 border-slate-700 pb-2">
+        <h2 class="text-sm text-purple-400 font-bold">BESTIARIO DE JEFES (32-BIT)</h2>
+        <button onclick="returnToStart()" class="text-xs text-slate-400 hover:text-white">Volver</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 flex items-center space-x-4">
+          <div class="w-16 h-16 bg-slate-900 rounded border border-green-800 flex items-center justify-center p-1">
+            <img src="img/kaul.jpg" alt="Kaul" class="w-full h-full object-contain pixelated">
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-green-400">1. Kaul</h3>
+            <p class="text-[10px] text-slate-400 mt-1">Arquero experto en tácticas del Bosque Oscuro.</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 flex items-center space-x-4">
+          <div class="w-16 h-16 bg-slate-900 rounded border border-amber-800 flex items-center justify-center p-1">
+            <img src="img/arenigma.jpg" alt="Arenigma" class="w-full h-full object-contain pixelated">
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-amber-400">2. Arenigma</h3>
+            <p class="text-[10px] text-slate-400 mt-1">Esfinge guardiana del Desierto de los Sueños.</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 flex items-center space-x-4">
+          <div class="w-16 h-16 bg-slate-900 rounded border border-purple-800 flex items-center justify-center p-1">
+            <img src="img/pesadrom.jpg" alt="Pesadrom" class="w-full h-full object-contain pixelated">
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-purple-400">3. Pesadrom</h3>
+            <p class="text-[10px] text-slate-400 mt-1">Hechicero oscuro en la entrada de la fortaleza.</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 flex items-center space-x-4">
+          <div class="w-16 h-16 bg-slate-900 rounded border border-indigo-800 flex items-center justify-center p-1">
+            <img src="img/antasma.png" alt="Antasma" class="w-full h-full object-contain pixelated">
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-indigo-400">4. Antasma</h3>
+            <p class="text-[10px] text-slate-400 mt-1">Ente espectral del Reino de las Pesadillas.</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 flex items-center space-x-4 col-span-1 md:col-span-2">
+          <div class="w-16 h-16 bg-slate-900 rounded border border-red-800 flex items-center justify-center p-1">
+            <img src="img/rey_osseus.png" alt="Rey Osseus" class="w-full h-full object-contain pixelated">
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-red-400">5. Rey Osseus</h3>
+            <p class="text-[10px] text-slate-400 mt-1">Soberano supremo en el Trono de la Fortaleza.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/game.js"></script>
+</body>
+</html>
